@@ -86,7 +86,7 @@ public class HouseEnv extends Environment {
                 dest = model.lFridge;
             } else if (l.equals("owner")) {
                 dest = model.lOwner;
-            }else if (l.equals("lights")) {
+            }else if (l.equals("lamp")) { // talvez o erro esteja aqui ("lights")
                 dest = model.lLights;
             }
 
