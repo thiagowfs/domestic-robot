@@ -1,5 +1,3 @@
-/* Initial goals */
-
 !desligar(lamp). // fonte source
 !get(beer).   // initial goal: get a beer
 !check_bored. // initial goal: verify whether I am getting bored
@@ -10,10 +8,11 @@
 
    
 +!desligar(lamp) : true
-   <- .suspend(get(beer)); // isso nao estava aqui
+   <- .suspend(get(beer)); // isso nao estava aqui .suspend(current_intention(I));//
    	  .send(robot, achieve, off(lights));
 	  .wait(1000);// isso nao estava aqui
-	  .resume(get(beer)).// isso nao estava aqui
+	  .resume(get(beer));// isso nao estava aqui resume(current_intention(I));//
+	  !desligar(lamp).
    
 	  
 +has(owner,beer) : true
@@ -37,4 +36,3 @@
 +msg(M)[source(Ag)] : true
    <- .print("Message from ",Ag,": ",M);
       -msg(M).
-
