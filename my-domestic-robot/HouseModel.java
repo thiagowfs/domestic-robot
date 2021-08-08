@@ -45,7 +45,7 @@ public class HouseModel extends GridWorldModel {
         add(OWNER, lOwner);
 		add(LIGHTS, lLights);
 		
-		/*
+		
 		new Thread() {
             public void run() {
                 try {
@@ -56,11 +56,11 @@ public class HouseModel extends GridWorldModel {
                         } else{
 							lightsOn = false;
 						}
-                        Thread.sleep(1000);
+                        Thread.sleep(3000);
                     }
                 } catch (Exception e) {} 
             }
-        }.start();*/
+        }.start();
     } 
 
     boolean openFridge() {
