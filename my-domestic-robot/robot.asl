@@ -14,38 +14,22 @@ too_much(B) :-
 
 
 /* Plans */
-
-/*+!off(lights):
-	lightstrue[source(percept)]
-   <- .print("Esse evento foi disparado? Eu acho que sim não sei");
-   	  !at(robot,lamp);
-      off(lights). 
-	  +!pause
-  <- .wait(2000);     // suspend this intention (the pause) for 2 seconds
-     .suspend(clean); // suspend the clean intention
-     .print("I'm having a break, alright.");
-     .wait(1000);     // suspend this intention again for 1 second
-     .print(cleaning);
-     .resume(clean);  // resume the clean intention
-     !pause.
-	*/
-/*
-+!off(lights)[source(A)]:
-	lightstrue[source(percept)]
-   <- .print("Esse evento foi disparado? Eu acho que sim não sei");
-   	  .wait(2000);
-	  .suspend(has(owner,beer));
-	  .wait(1000);
-	  .resume(has(owner,beer));
-   	  !at(robot,lamp);
-      off(lights);
-	  ?has(owner,beer).*/
 	
 +!off(lights)[source(A)]:
 	lightstrue[source(percept)]
-   <- .print("Esse evento foi disparado? Eu acho que sim não sei");
+   <- .print("Esse evento foi disparado? Eu acho que sim nÃ£o sei");
    	  !at(robot,lamp);
       off(lights).
+	  
+/* 
++!desligar(lamp) : lighstrue[source(self)]
+   <- .suspend(get(beer));//.suspend(get(beer)); // isso nao estava aqui
+      .print("Esse evento foi disparado? Eu acho que sim nÃ£o sei");
+   	  !at(robot,lamp);
+   	   off(lights);
+	  .wait(1000);// isso nao estava aqui
+	  .resume(get(beer));//.resume(get(beer));// isso nao estava aqui // current_intention(I)
+	  !desligar(lamp). */
 	  
 +!has(owner,beer)
    :  available(beer,fridge) & not too_much(beer)
@@ -99,4 +83,3 @@ too_much(B) :-
 
 +?time(T) : true
   <-  time.check(T).
-
